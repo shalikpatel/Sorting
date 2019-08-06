@@ -1,0 +1,49 @@
+/*
+Given 2 sorted arrays A and B of size N each. 
+Print sum of middle elements of the array obtained after merging the given arrays.
+*/
+#include<bits/stdc++.h>
+using namespace std;
+
+int sumMiddle(int a[], int b[], int n)
+{
+    int count = 0;
+    int i = 0;
+    int j = 0;
+    int sum = 0;
+    int arr[2 * n + 1];
+    while(count < 2 * n + 1) {
+        if(a[i] < b[j]) {
+            arr[count++] = a[i];
+            i++;
+        } else {
+            arr[count++] = b[j];
+            j++;
+        }
+        
+    }
+    
+    sum = arr[n-1] + arr[n];
+    
+    return sum;
+    
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n+1];
+    int b[n+1];
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    for(int i = 0; i < n; i++) {
+        cin >> b[i];
+    }
+    a[n] = INT_MAX;
+    b[n] = INT_MAX;
+    cout << sumMiddle(a, b, n) << endl;
+
+	return 0;
+}
